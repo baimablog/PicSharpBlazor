@@ -1629,7 +1629,7 @@
       "url": "_framework\/System.IO.Pipelines.dll"
     },
     {
-      "hash": "sha256-xM5Na+Lm4N7s2P\/ml6nxjlbCelGpvqngYz1TfB47yZE=",
+      "hash": "sha256-kYkaKtj2hTepLpREsugll8SJTFmSGyEw2IW415tpKzc=",
       "url": "_framework\/System.Linq.Dynamic.Core.dll"
     },
     {
@@ -1801,7 +1801,7 @@
       "url": "_framework\/PicSharp.HttpApi.Client.dll"
     },
     {
-      "hash": "sha256-MYPSuSs\/sLr1dfSsRHs2qIPGAOI0DYmPGNsGd6arwnY=",
+      "hash": "sha256-6ex58ZQlZyu\/k8jjvHdqWenn3vTReGx6HefJl1AGxtU=",
       "url": "_framework\/PicSharp.Blazor.dll"
     },
     {
@@ -1977,7 +1977,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-xUfepZDNa8ZBFGyi5dcMtIfcsNeYeq13yp0vXRI8sKQ=",
+      "hash": "sha256-ELd8ANFs8IGdvBKgc3jwvE1F9DZQDdkPwE9MS1Jvvj0=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -1985,5 +1985,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "GPESWGH1"
+  "version": "ZiIxAms6"
 };
