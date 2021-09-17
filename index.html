@@ -1,1 +1,118 @@
-<h1>aa</h1>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>PicSharp</title>
+    <base href="/" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="css/loading/loading.css" rel="stylesheet" />
+    <link href="manifest.json" rel="manifest" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+    <link href="_content/AntDesign/css/ant-design-blazor.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="stars"></div>
+    <div id="main">
+        <div id="app">
+            <div class="text-wrapper">
+                <div class="text part1">
+                    <div>
+                        <span class="letter"><div class="character">L</div> <span></span></span>
+                        <span class="letter"><div class="character">o</div> <span></span></span>
+                        <span class="letter"><div class="character">a</div> <span></span></span>
+                        <span class="letter"><div class="character">d</div> <span></span></span>
+                        <span class="letter"><div class="character">i</div> <span></span></span>
+                        <span class="letter"><div class="character">n</div> <span></span></span>
+                        <span class="letter"><div class="character">g</div> <span></span></span>
+                    </div>
+                </div>
+                <div class="how-to"><span>正在加载中，请您耐心等待...</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+    <script type="module">
+        import { BrotliDecode } from './decode.js';
+        Blazor.start({
+            loadBootResource: function (type, name, defaultUri, integrity) {
+                if (type !== 'dotnetjs' && location.hostname !== 'localhost') {
+                    return (async function () {
+                        const response = await fetch(defaultUri + '.br', { cache: 'no-cache' });
+                        if (!response.ok) {
+                            throw new Error(response.statusText);
+                        }
+                        const originalResponseBuffer = await response.arrayBuffer();
+                        const originalResponseArray = new Int8Array(originalResponseBuffer);
+                        const decompressedResponseArray = BrotliDecode(originalResponseArray);
+                        const contentType = type ===
+                            'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
+                        return new Response(decompressedResponseArray,
+                            { headers: { 'content-type': contentType } });
+                    })();
+                }
+            }
+        });
+    </script>
+    <script src="_content/AntDesign/js/ant-design-blazor.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>navigator.serviceWorker.register('service-worker.js');</script>
+
+    <script>
+        $(document).ready(function () {
+            var stars = 1500;  /*星星的密集程度，数字越大越多*/
+            var $stars = $(".stars");
+            var r = 1500;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
+            for (var i = 0; i < stars; i++) {
+                var $star = $("<div/>").addClass("star");
+                $stars.append($star);
+            }
+            $(".star").each(function () {
+                var cur = $(this);
+                var s = 0.2 + (Math.random() * 1);
+                var curR = r + (Math.random() * 300);
+                cur.css({
+                    transformOrigin: "0 0 " + curR + "px",
+                    transform: " translate3d(0,0,-" + curR + "px) rotateY(" + (Math.random() * 360) + "deg) rotateX(" + (Math.random() * -50) + "deg) scale(" + s + "," + s + ")"
+
+                })
+            })
+        })
+
+        function getItem(key) {
+            var res = localStorage.getItem(key);
+            return res;
+        }
+        function setItem(key, value) {
+            localStorage.setItem(key, value);
+            return true;
+        }
+        function removeItem(key) {
+            localStorage.removeItem(key);
+            return true;
+        }
+        function clearItem() {
+            localStorage.clear();
+            return true;
+        }
+        function copyUrl(val) {
+            navigator.clipboard.writeText(val);
+            return true;
+        }
+
+        function openSwagger(url) {
+            window.open(url);
+        }
+
+    </script>
+</body>
+
+</html>
